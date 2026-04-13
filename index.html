@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aseguradora Solidaria — Demo Chatbot Sofía</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="scene">
+  <img
+    src="Captura_de_pantalla_2026-04-10_a_la_s__3_22_34_p_m_.png"
+    alt="Aseguradora Solidaria — sitio web oficial"
+  />
+
+  <!-- Panel de accesos rápidos -->
+  <div class="accesos">
+    <h4>Accesos rápidos</h4>
+    <div class="acc-item" onclick="handleQuickReply('¿Cómo reporto un siniestro?')">🛡️ Reportar siniestro</div>
+    <div class="acc-item" onclick="handleQuickReply('Precio del SOAT 2025')">🚗 Consultar SOAT</div>
+    <div class="acc-item" onclick="handleQuickReply('Quiero cotizar un seguro')">📋 Cotizar seguro</div>
+    <div class="acc-item" onclick="handleQuickReply('Visitar agencia más cercana')">📍 Agencias</div>
+    <div class="acc-item" onclick="handleQuickReply('¿Cómo pago mi seguro en línea?')">💳 Pagos en línea</div>
+  </div>
+
+  <!-- Widget del chatbot -->
+  <div class="chat-widget" id="chatW">
+
+    <!-- Header -->
+    <div class="ch">
+      <div class="ch-av">S</div>
+      <div>
+        <div class="ch-name">Sofía — Asistente Virtual</div>
+        <div class="ch-st"><span class="ch-dot"></span>En línea ahora</div>
+      </div>
+      <div class="ch-close" onclick="toggleChat()" title="Minimizar">−</div>
+    </div>
+
+    <!-- Área de mensajes -->
+    <div class="msgs" id="msgs"></div>
+
+    <!-- Input -->
+    <div class="inp-row">
+      <input
+        class="ci"
+        id="ci"
+        type="text"
+        placeholder="Escribe tu consulta..."
+        onkeypress="if(event.key==='Enter') send()"
+      />
+      <button class="sb" onclick="send()">➤</button>
+    </div>
+
+  </div>
+
+  <!-- Botón flotante cuando está minimizado -->
+  <div class="chat-bubble" id="chatBubble" onclick="toggleChat()">
+    💬
+    <div class="badge">1</div>
+  </div>
+</div>
+
+<!-- Orden de carga: primero KB, luego la lógica del bot -->
+<script src="knowledge_base.js"></script>
+<script src="chatbot.js"></script>
+
+</body>
+</html>
